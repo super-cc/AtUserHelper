@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         private SpannableStringBuilder beforeText, afterText;
 
         public void afterTextChanged(Editable s) {
+            //判断是否输入了At
             if (AtUserHelper.isInputAt(beforeText.toString(), afterText.toString(), edt.getSelectionEnd())) {
                 //这里正常的代码应该是跳到@好友的页面，然后回来之后做添加@内容，所以做个延迟的操作
                 tv.postDelayed(new Runnable() {
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 }, 300);
             }
 
+            //删除At整体
             AtUserHelper.isRemoveAt(edt, mTextWatcher, beforeText, afterText, s, beforeEditStart, beforeEditEnd);
         }
 

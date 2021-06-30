@@ -112,7 +112,7 @@ public class AtUserHelper {
     }
 
     /**
-     * 是否输入了At
+     * @return 是否输入了At
      */
     public static boolean isInputAt(String beforeStr, String afterStr, int editSelectionEnd) {
         if (!TextUtils.isEmpty(afterStr)) {
@@ -185,12 +185,15 @@ public class AtUserHelper {
         return false;
     }
 
+    /**
+     * 将User添加到At之后
+     */
     public static void appendChooseUser(EditText editText, String name, String uid, TextWatcher watcher) {
         appendChooseUser(editText, name, uid, watcher, 0);
     }
 
     /**
-     * 将User添加到At之后
+     * 将User添加到At之后 并且变色
      */
     public static void appendChooseUser(EditText editText, String name, String uid, TextWatcher watcher, @ColorInt int color) {
         if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(uid)) {
