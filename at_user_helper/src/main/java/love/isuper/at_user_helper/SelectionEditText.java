@@ -42,20 +42,20 @@ public class SelectionEditText extends AppCompatEditText {
         }
     }
 
-    public void addonSelectionChangeListener(OnSelectionChangeListener onSelectionChangeListener) {
+    public void addOnSelectionChangeListener(OnSelectionChangeListener onSelectionChangeListener) {
         if (onSelectionChangeListeners == null) {
             onSelectionChangeListeners = new ArrayList<>();
         }
         onSelectionChangeListeners.add(onSelectionChangeListener);
     }
 
-    public void removeSelectionChangedListener(OnSelectionChangeListener onSelectionChangeListener) {
+    public void removeOnSelectionChangedListener(OnSelectionChangeListener onSelectionChangeListener) {
         if (onSelectionChangeListeners != null) {
             onSelectionChangeListeners.remove(onSelectionChangeListener);
         }
     }
 
-    public void clearSelectionChangedListener() {
+    public void clearOnSelectionChangedListener() {
         if (onSelectionChangeListeners != null) {
             onSelectionChangeListeners.clear();
         }
