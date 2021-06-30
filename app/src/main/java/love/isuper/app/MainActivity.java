@@ -67,9 +67,6 @@ public class MainActivity extends AppCompatActivity {
         private SpannableStringBuilder beforeText, afterText;
 
         public void afterTextChanged(Editable s) {
-            // 先去掉监听器，否则会出现栈溢出
-            edt.removeTextChangedListener(mTextWatcher);
-
             if (AtUserHelper.isInputAt(beforeText.toString(), afterText.toString(), edt.getSelectionEnd())) {
                 //这里正常的代码应该是跳到@好友的页面，然后回来之后做添加@内容，所以做个延迟的操作
                 tv.postDelayed(new Runnable() {
@@ -81,10 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 }, 300);
             }
 
-            AtUserHelper.judgeLastEdit(edt, beforeText, afterText, s, beforeEditStart, beforeEditEnd);
-
-            // 恢复监听器
-            edt.addTextChangedListener(mTextWatcher);
+            AtUserHelper.isRemoveAt(edt, mTextWatcher, beforeText, afterText, s, beforeEditStart, beforeEditEnd);
         }
 
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {

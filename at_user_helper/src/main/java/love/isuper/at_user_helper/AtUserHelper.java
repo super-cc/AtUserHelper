@@ -28,10 +28,16 @@ public class AtUserHelper {
 //        public static final String AT_PATTERN = "@\\(name:([^\\n\\r`~\\!@#\\$%\\^&\\*\\(\\)\\+=\\|'\\:;'\\,\\[\\]\\.\\<\\>/\\?！@#￥%……（）——\\{\\}【】‘；：”“’。，、？]+),id:([A-Za-z0-9]+)\\)";
     public static final String AT_PATTERN = "@\\(name:([\\s\\S]*?),id:([A-Za-z0-9]+)\\)";
 
+    /**
+     * @return 解析AtUser
+     */
     public static CharSequence parseAtUserLink(CharSequence text) {
         return parseAtUserLink(text, 0);
     }
 
+    /**
+     * @return 解析AtUser
+     */
     public static CharSequence parseAtUserLink(CharSequence text, @ColorInt int color) {
         return parseAtUserLink(text, color, null);
     }
@@ -122,7 +128,21 @@ public class AtUserHelper {
     /**
      * @return 是否删除AtUser整体
      */
-    public static boolean judgeLastEdit(EditText editText, CharSequence beforeStr, CharSequence afterStr, Editable s, int editSelectionStart, int editSelectionEnd) {
+    public static boolean isRemoveAt(EditText editText, TextWatcher watcher,
+                                        CharSequence beforeStr, CharSequence afterStr, Editable s,
+                                        int editSelectionStart, int editSelectionEnd) {
+        editText.removeTextChangedListener(watcher);
+        boolean isRemove = isRemoveAt(editText, beforeStr, afterStr, s, editSelectionStart, editSelectionEnd);
+        editText.addTextChangedListener(watcher);
+        return isRemove;
+    }
+
+    /**
+     * @return 是否删除AtUser整体
+     */
+    public static boolean isRemoveAt(EditText editText,
+                                     CharSequence beforeStr, CharSequence afterStr, Editable s,
+                                     int editSelectionStart, int editSelectionEnd){
         if (TextUtils.isEmpty(afterStr) || TextUtils.isEmpty(beforeStr)
                 || !(afterStr instanceof SpannableStringBuilder)
                 || !(beforeStr instanceof SpannableStringBuilder)) {
