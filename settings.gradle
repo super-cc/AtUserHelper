@@ -1,0 +1,3 @@
+include ':at_user_helper'
+include ':app'
+rootProject.name = "AtUserHelper"
