@@ -1,8 +1,5 @@
 package love.isuper.app;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.SpannableStringBuilder;
@@ -12,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import love.isuper.at_user_helper.AtUserHelper;
 import love.isuper.at_user_helper.AtUserLinkOnClickListener;
